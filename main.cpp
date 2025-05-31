@@ -1,7 +1,9 @@
-#include <iostream>
+#include <iostream> //use <> to include c library files
+//#include "test.h" //use "" to include project files
 
 //using namespace std; //avoid doing this. std contains many libraries and this might cause a conflict.
 //instead do "using std::" to make it easier to type out some of the std libraries
+//"using" also makes it harder to understand where things are defined.
 using std::cout;
 using std::endl;
 
@@ -11,6 +13,10 @@ namespace first {   //namespaces are used if you want to reuse the same variable
 
 namespace second {
     int x = 2;
+}
+
+namespace {         //anonyomous namespaces are namspaces without names and can only be referenced in the file they're defined.
+    int test = 5;
 }
 
 class Person {
@@ -36,7 +42,7 @@ class Person {
         //encapsulation: guarding how members of a class can be accessed. In this case first and last name can only be changed/viewed by the setter and getter functions.
         void setFirstName(std::string first) {mFirst = first;}
         void setLastName(std::string last) {mLast = last;}
-        //this should only be used to help identify the correct parameter when both parameters have the same name
+        //"this" should only be used to help identify the correct parameter when both parameters have the same name
         void setMiddleName(std::string middle) {this->middle = middle;}
         std::string GetName() {
             return mFirst + " " + mLast;
@@ -99,7 +105,7 @@ class Employee : public Person, Age {
             return mDepartment;
         }
 
-        //polymorphism. function overloading. This occurs when the program is being compiled.
+        //polymorphism: function overloading. This occurs when the program is being compiled.
         void PrintDepartment() {
             cout << mDepartment << endl;
         }
@@ -147,6 +153,14 @@ int main()
     Age *myAge = new Dog();
     myAge->PrintAge();
     delete myAge;
+
+    /*TO DO:
+        c++ static
+        review and check examples of encapsulation, polymorphism, inheritance, abstraction
+        c++ smart pointers
+        c++ strings
+        c++ RAII
+    */
 
     return 0;
 }
